@@ -28,6 +28,6 @@ class Shape
 	
 	public static function circle(color: Color): Mesh
 	{
-		return polygon(360, color);
+		return polygon(180, color);
 	}
 }
