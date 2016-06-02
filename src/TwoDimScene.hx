@@ -28,7 +28,7 @@ class TwoDimScene extends Scene2D
 		for (i in 0...5000)
 			batch.addSprite("full", Std.random(2000) - 1000, Std.random(2000) - 1000);
 		
-		orthoCam = new OrthographicCamera(800, 480, -1, 1);
+		orthoCam = new OrthographicCamera(960, 540, -1, 1);
 		
 		renderType(Scene2D.SPRITE_BATCH);
 	}
@@ -37,7 +37,7 @@ class TwoDimScene extends Scene2D
 	{
 		var width: Int = Lib.current.stage.stageWidth;
 		var height: Int = Lib.current.stage.stageHeight;
-		var scale: Float = Math.min(width / 800, height / 480);
+		var scale: Float = Math.min(width / 960, height / 540);
 		
 		orthoCam.width = Std.int(Lib.current.stage.stageWidth / scale);
 		orthoCam.height = Std.int(Lib.current.stage.stageHeight / scale);

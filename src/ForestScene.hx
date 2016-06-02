@@ -27,6 +27,8 @@ class ForestScene extends Scene3D
 	{
 		super();
 		
+		clearColor = Color.fromFloat(0.2, 0.2, 1.0);
+		
 		KeyboardInput.bind("forward", Keyboard.W);
 		KeyboardInput.bind("backward", Keyboard.S);
 		KeyboardInput.bind("left", Keyboard.A);
@@ -46,7 +48,7 @@ class ForestScene extends Scene3D
 		), [0, 1, 2, 0, 2, 3]);
 
 		treeModel_0 = createModelInstance(treeMesh);
-		treeModel_0.moveBy(0, 0, 0);
+		treeModel_0.moveBy(0, 5, 0);
 		
 		treeModel_1 = createModelInstance(treeMesh);
 		treeModel_1.moveBy(3, 0, 3);		
@@ -122,10 +124,7 @@ class ForestScene extends Scene3D
 		var movement: Vector3D = new Vector3D();
 		
 		if (KeyboardInput.isPressed("unfocus"))
-		{
 			MouseLook.endMouseLook();
-		}
-		
 		if (KeyboardInput.isDown("forward"))
 			movement = movement.add(perspCam.front);
 		if (KeyboardInput.isDown("backward"))

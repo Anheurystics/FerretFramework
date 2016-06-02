@@ -5,8 +5,8 @@
 
 	<template path="index.html" if="html5" />
 	
-	<window width="800" height="480" unless="mobile" />
-	<window orientation="landscape" fps="60" antialiasing="2" />
+	<window width="960" height="540" unless="mobile" />
+	<window orientation="portrait" fps="60" antialiasing="2" />
 	
 	<haxedef name="webgl" if="html5" />
 	<set name="webgl" if="html5" />
