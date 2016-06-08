@@ -2,3 +2,7 @@ assets/fonts
 assets/models
 assets/textures
 bin
+src/ForestScene.hx
+src/Main.hx
+src/MenuScene.hx
+src/TwoDimScene.hx
