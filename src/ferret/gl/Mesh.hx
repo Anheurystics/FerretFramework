@@ -1,6 +1,6 @@
-package ferret.fgl;
+package ferret.gl;
 
-import ferret.fgl.MeshData.DataLayout;
+import ferret.gl.MeshData.DataLayout;
 import openfl.gl.GL;
 import openfl.gl.GLBuffer;
 import openfl.utils.Float32Array;

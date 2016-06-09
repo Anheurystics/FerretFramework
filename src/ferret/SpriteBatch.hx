@@ -1,14 +1,14 @@
 package ferret;
 
+import ferret.SpriteBatch.Sprite;
+import ferret.TextureSheet;
+import ferret.gl.Mesh;
+import ferret.gl.MeshData;
+import ferret.gl.Renderer;
+import ferret.gl.Utils;
 import openfl.Lib;
 import openfl.geom.Rectangle;
 import openfl.geom.Vector3D;
-import ferret.fgl.Mat4;
-import ferret.fgl.Mesh;
-import ferret.fgl.MeshData;
-import ferret.fgl.Renderer;
-import ferret.fgl.Utils;
-import ferret.TextureSheet;
 
 typedef Sprite = 
 {
@@ -18,6 +18,8 @@ typedef Sprite =
 	var scaleX: Float;
 	var scaleY: Float;
 	var rotation: Float;
+	var visible: Bool;
+	var pooled: Bool;
 };
 
 class SpriteBatch
@@ -54,7 +56,8 @@ class SpriteBatch
 	public function addSprite(name: String, x: Float, y: Float, sx: Float = 1, sy: Float = 1, rotation: Float = 0): Void
 	{
 		var newSprite: Sprite = {
-			name: name, x: x, y: y, scaleX: sx, scaleY: sy, rotation: rotation
+			name: name, x: x, y: y, scaleX: sx, scaleY: sy, rotation: rotation,
+			visible: true, pooled: false
 		};
 		
 		sprites.push(newSprite);
@@ -62,7 +65,7 @@ class SpriteBatch
 	}
 	
 	public function updateSprite(index: Int)
-	{
+	{		
 		var start: Int = Lib.getTimer();
 		
 		var sprite: Sprite = sprites[index];

@@ -1,6 +1,6 @@
-package ferret.fgl;
+package ferret.gl;
 
-import ferret.fgl.Mat3;
+import ferret.gl.Mat3;
 import openfl.geom.Vector3D;
 
 class Transform2D

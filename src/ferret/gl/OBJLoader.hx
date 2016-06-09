@@ -1,7 +1,7 @@
-package ferret.fgl;
+package ferret.gl;
 
-import ferret.fgl.Mesh;
-import ferret.fgl.MeshData;
+import ferret.gl.Mesh;
+import ferret.gl.MeshData;
 import openfl.Assets;
 import openfl.geom.Vector3D;
 

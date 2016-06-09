@@ -1,6 +1,6 @@
 package ferret;
 
-import ferret.fgl.Texture;
+import ferret.gl.Texture;
 import openfl.geom.Rectangle;
 
 class TextureSheet

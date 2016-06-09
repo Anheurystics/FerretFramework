@@ -47,7 +47,7 @@ class ParticleSystem extends SpriteBatch
 			};
 			
 			var newSprite: Sprite = {
-				name: "particle", x: x, y: y, scaleX: 1, scaleY: 1, rotation: 0
+				name: "particle", x: x, y: y, scaleX: 1, scaleY: 1, rotation: 0, visible: true, pooled: false
 			}
 			
 			particleData.push(newParticle);

@@ -1,4 +1,4 @@
-package ferret.fgl;
+package ferret.gl;
 
 import openfl.gl.GL;
 import openfl.gl.GLFramebuffer;

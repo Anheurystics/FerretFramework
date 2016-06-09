@@ -1,9 +1,9 @@
-package ferret.fgl;
+package ferret.gl;
 
-import ferret.fgl.Mat;
-import ferret.fgl.Mat4;
-import ferret.fgl.Mesh;
-import ferret.fgl.Program;
+import ferret.gl.Mat;
+import ferret.gl.Mat4;
+import ferret.gl.Mesh;
+import ferret.gl.Program;
 import openfl.gl.GL;
 import openfl.gl.GLUniformLocation;
 import openfl.utils.Float32Array;

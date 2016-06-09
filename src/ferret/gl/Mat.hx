@@ -1,4 +1,4 @@
-package ferret.fgl;
+package ferret.gl;
 
 import openfl.geom.Matrix3D;
 import openfl.utils.Float32Array;

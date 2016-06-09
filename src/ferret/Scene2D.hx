@@ -1,6 +1,6 @@
 package ferret;
-import ferret.fgl.OrthographicCamera;
-import ferret.fgl.Program;
+import ferret.gl.OrthographicCamera;
+import ferret.gl.Program;
 import openfl.Assets;
 
 class Scene2D extends Scene
@@ -13,9 +13,18 @@ class Scene2D extends Scene
 	private var untextured2D: Program = new Program(Assets.getText("shaders/untextured2D.vert"), Assets.getText("shaders/untextured2D.frag"));
 	private var textured2D: Program = new Program(Assets.getText("shaders/textured2D.vert"), Assets.getText("shaders/textured2D.frag"));
 
+	private var renderType: Int;
+	
 	public var orthoCam: OrthographicCamera;
 	
-	public function renderType(type: Int)
+	public function new()
+	{
+		super();
+		
+		setRenderType(SPRITE_INDIV);
+	}
+	
+	public function setRenderType(type: Int)
 	{
 		switch(type)
 		{
@@ -25,8 +34,11 @@ class Scene2D extends Scene
 				program = batchTextured2D;
 			case SHAPES:
 				program = untextured2D;
+			default:
+				program = textured2D;
 		}
 		
+		renderType = type;
 		renderer.uploadProgram(program);
 	}
 	

@@ -1,7 +1,7 @@
 package ferret;
-import ferret.fgl.Camera;
-import ferret.fgl.Program;
-import ferret.fgl.Renderer;
+import ferret.gl.Camera;
+import ferret.gl.Program;
+import ferret.gl.Renderer;
 import openfl.Lib;
 import openfl.display.OpenGLView;
 import openfl.events.Event;

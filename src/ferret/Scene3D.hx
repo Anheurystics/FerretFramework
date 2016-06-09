@@ -1,8 +1,9 @@
 package ferret;
-import ferret.fgl.*;
-import openfl.*;
 
-typedef ModelInstance = 
+import ferret.gl.*;
+import openfl.Assets;
+
+typedef Instance3D = 
 {
 	var meshIndex: Int;
 	var transform: Transform3D;

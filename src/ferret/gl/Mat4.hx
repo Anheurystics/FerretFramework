@@ -1,6 +1,6 @@
-package ferret.fgl;
+package ferret.gl;
 
-import ferret.fgl.Mat;
+import ferret.gl.Mat;
 import openfl.geom.Matrix3D;
 import openfl.geom.Vector3D;
 import openfl.utils.Float32Array;

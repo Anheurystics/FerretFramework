@@ -1,7 +1,7 @@
 package ferret;
 import ferret.Color;
-import ferret.fgl.Mesh;
-import ferret.fgl.MeshData;
+import ferret.gl.Mesh;
+import ferret.gl.MeshData;
 import openfl.gl.GL;
 
 class Shape
