@@ -4,6 +4,7 @@ assets/textures
 bin
 src/ForestScene.hx
 src/Main.hx
-src/MenuScene.hx
-src/TwoDimScene.hx
+src/ModelScene.hx
+src/ShapeScene.hx
+src/SpriteScene.hx
 FerretFramework.hxproj
