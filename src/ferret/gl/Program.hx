@@ -1,12 +1,9 @@
 package ferret.gl;
 
-import openfl.Assets;
 import openfl.gl.GL;
 import openfl.gl.GLProgram;
 import openfl.gl.GLShader;
 import openfl.gl.GLUniformLocation;
-import openfl.utils.Float32Array;
-import openfl.utils.Int32Array;
 
 class Program
 {

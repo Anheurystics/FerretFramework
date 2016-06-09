@@ -4,7 +4,6 @@ import openfl.Assets;
 import openfl.display.BitmapData;
 import openfl.gl.GL;
 import openfl.gl.GLTexture;
-import openfl.utils.UInt8Array;
 
 class Texture
 {

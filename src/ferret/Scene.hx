@@ -1,4 +1,5 @@
 package ferret;
+
 import ferret.gl.Camera;
 import ferret.gl.Program;
 import ferret.gl.Renderer;

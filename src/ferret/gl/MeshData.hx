@@ -1,4 +1,5 @@
 package ferret.gl;
+
 import openfl.geom.Vector3D;
 
 typedef DataLayout = 

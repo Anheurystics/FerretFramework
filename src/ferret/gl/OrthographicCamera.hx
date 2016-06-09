@@ -1,4 +1,5 @@
 package ferret.gl;
+
 import ferret.gl.Mat4;
 import openfl.geom.Matrix3D;
 import openfl.geom.Vector3D;

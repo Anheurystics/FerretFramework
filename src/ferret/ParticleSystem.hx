@@ -1,4 +1,5 @@
 package ferret;
+
 import ferret.ParticleSystem.Particle;
 import ferret.SpriteBatch.Sprite;
 

@@ -1,4 +1,5 @@
 package ferret.gl;
+
 import ferret.gl.Texture;
 import openfl.geom.Rectangle;
 import openfl.gl.GL;

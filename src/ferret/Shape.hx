@@ -1,4 +1,5 @@
 package ferret;
+
 import ferret.Color;
 import ferret.gl.Mesh;
 import ferret.gl.MeshData;
