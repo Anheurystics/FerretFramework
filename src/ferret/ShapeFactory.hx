@@ -5,7 +5,7 @@ import ferret.gl.Mesh;
 import ferret.gl.MeshData;
 import openfl.gl.GL;
 
-class Shape
+class ShapeFactory
 {
 	public static function polygon(sides: Int, color: Color): Mesh
 	{
