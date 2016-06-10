@@ -20,7 +20,7 @@ typedef Sprite =
 	var rotation: Float;
 	var visible: Bool;
 	var pooled: Bool;
-};
+};	
 
 class SpriteBatch
 {
@@ -50,7 +50,7 @@ class SpriteBatch
 	public function new(_sheet: TextureSheet) 
 	{
 		sheet = _sheet;
-		mesh = new Mesh(meshData = new MeshData([], ["position", "uv", "color"], [3, 2, 3]), []);
+		mesh = new Mesh(meshData = new MeshData([], ["position", "uv", "color"], [2, 2, 3]), []);
 	}
 
 	public function addSprite(name: String, x: Float, y: Float, sx: Float = 1, sy: Float = 1, rotation: Float = 0): Void
@@ -83,23 +83,22 @@ class SpriteBatch
 		var cosTheta: Float = Math.cos(theta);
 		var sinTheta: Float = Math.sin(theta);
 		
-		var spriteOff: Int = index * 32;
+		var spriteOff: Int = index * 28;
 		
 		for (i in 0...4)
 		{
-			var vertOff: Int = i * 8;
+			var vertOff: Int = i * 7;
 			
 			var position: Vector3D = quad[i];
 			var uv: Vector3D = uvs[i];		
 			
 			spriteVertices[spriteOff + vertOff] = ((position.x * cosTheta) - (position.y * sinTheta)) * sx * mapping.width + x;
 			spriteVertices[spriteOff + vertOff + 1] = ((position.x * sinTheta) + (position.y * cosTheta)) * sy * mapping.height + y;
-			spriteVertices[spriteOff + vertOff + 2] = position.z;
-			spriteVertices[spriteOff + vertOff + 3] = (uv.x * mappingUV.width) + mappingUV.x;
-			spriteVertices[spriteOff + vertOff + 4] = (uv.y * mappingUV.height) + mappingUV.y;
+			spriteVertices[spriteOff + vertOff + 2] = (uv.x * mappingUV.width) + mappingUV.x;
+			spriteVertices[spriteOff + vertOff + 3] = (uv.y * mappingUV.height) + mappingUV.y;
+			spriteVertices[spriteOff + vertOff + 4] = 1;
 			spriteVertices[spriteOff + vertOff + 5] = 1;
 			spriteVertices[spriteOff + vertOff + 6] = 1;
-			spriteVertices[spriteOff + vertOff + 7] = 1;
 		}
 		
 		var indexOff: Int = index * 6;
