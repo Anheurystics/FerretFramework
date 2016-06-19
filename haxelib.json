@@ -1,0 +1,14 @@
+{
+  "name": "FerretFramework",
+  "url" : ""
+  "license": "",
+  "tags": [],
+  "description": "",
+  "version": "",
+  "releasenote": "",
+  "contributors": [],
+  "dependencies": {
+    "openfl": "",
+    "lime": ""
+  }
+}
