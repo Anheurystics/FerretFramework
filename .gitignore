@@ -8,3 +8,4 @@ src/ModelScene.hx
 src/ShapeScene.hx
 src/SpriteScene.hx
 FerretFramework.hxproj
+project.xml
