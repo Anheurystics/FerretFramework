@@ -46,6 +46,7 @@ class Scene extends OpenGLView
 	{
 		renderer.clear(clearColor.r, clearColor.g, clearColor.b);
 		renderer.depthTest(GL.LEQUAL);
+		
 		if (program != null)
 		{	
 			renderer.uploadProgram(program);

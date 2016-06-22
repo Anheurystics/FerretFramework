@@ -19,6 +19,10 @@ typedef Sprite =
 	var scaleX: Float;
 	var scaleY: Float;
 	var rotation: Float;
+	var r: Float;
+	var g: Float;
+	var b: Float;
+	var a: Float;
 	var visible: Bool;
 	var pooled: Bool;
 };	
@@ -53,13 +57,14 @@ class SpriteBatch
 	public function new(_sheet: TextureSheet) 
 	{
 		sheet = _sheet;
-		mesh = new Mesh(meshData = new MeshData([], ["position", "uv", "color"], [2, 2, 3]), []);
+		mesh = new Mesh(meshData = new MeshData([], ["position", "uv", "color"], [2, 2, 4]), []);
 	}
 
 	public function addSprite(name: String, x: Float, y: Float, sx: Float = 1, sy: Float = 1, rotation: Float = 0): Void
 	{
 		var newSprite: Sprite = {
 			name: name, x: x, y: y, scaleX: sx, scaleY: sy, rotation: rotation,
+			r: 1, g: 1, b: 1, a: 1,
 			visible: true, pooled: false
 		};
 		
@@ -77,20 +82,24 @@ class SpriteBatch
 		var y: Float = sprite.y;
 		var sx: Float = sprite.scaleX;
 		var sy: Float = sprite.scaleY;
-		var r: Float = sprite.rotation;
+		var rotation: Float = sprite.rotation;
+		var r: Float = sprite.r;
+		var g: Float = sprite.g;
+		var b: Float = sprite.b;
+		var a: Float = sprite.a;
 		
 		var mapping: Rectangle = sheet.getMapping(name);
 		var mappingUV: Rectangle = sheet.getMappingUV(name);
 		
-		var theta: Float = Utils.toRad(r);
+		var theta: Float = Utils.toRad(rotation);
 		var cosTheta: Float = Math.cos(theta);
 		var sinTheta: Float = Math.sin(theta);
 		
-		var spriteOff: Int = index * 28;
+		var spriteOff: Int = index * 32;
 		
 		for (i in 0...4)
 		{
-			var vertOff: Int = i * 7;
+			var vertOff: Int = i * 8;
 			
 			var position: Vector3D = quad[i];
 			var uv: Vector3D = uvs[i];		
@@ -99,9 +108,10 @@ class SpriteBatch
 			spriteVertices[spriteOff + vertOff + 1] = ((position.x * sinTheta) + (position.y * cosTheta)) * sy * mapping.height + y;
 			spriteVertices[spriteOff + vertOff + 2] = (uv.x * mappingUV.width) + mappingUV.x;
 			spriteVertices[spriteOff + vertOff + 3] = (uv.y * mappingUV.height) + mappingUV.y;
-			spriteVertices[spriteOff + vertOff + 4] = 1;
-			spriteVertices[spriteOff + vertOff + 5] = 1;
-			spriteVertices[spriteOff + vertOff + 6] = 1;
+			spriteVertices[spriteOff + vertOff + 4] = r;
+			spriteVertices[spriteOff + vertOff + 5] = g;
+			spriteVertices[spriteOff + vertOff + 6] = b;
+			spriteVertices[spriteOff + vertOff + 7] = a;
 		}
 		
 		var indexOff: Int = index * 6;
