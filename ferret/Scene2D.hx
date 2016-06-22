@@ -6,11 +6,9 @@ import openfl.Assets;
 
 class Scene2D extends Scene
 {
-	private static inline var SPRITE_INDIV: Int = 1;
-	private static inline var SPRITE_BATCH: Int = 2;
-	private static inline var SHAPES: Int = 3;
+	private static inline var SPRITES: Int = 1;
+	private static inline var SHAPES: Int = 2;
 
-	private var batchTextured2D: Program = new Program(Assets.getText("shaders/batchTextured2D.vert"), Assets.getText("shaders/batchTextured2D.frag"));
 	private var untextured2D: Program = new Program(Assets.getText("shaders/untextured2D.vert"), Assets.getText("shaders/untextured2D.frag"));
 	private var textured2D: Program = new Program(Assets.getText("shaders/textured2D.vert"), Assets.getText("shaders/textured2D.frag"));
 
@@ -22,17 +20,15 @@ class Scene2D extends Scene
 	{
 		super();
 		
-		setRenderType(SPRITE_INDIV);
+		setRenderType(SPRITES);
 	}
 	
 	public function setRenderType(type: Int)
 	{
 		switch(type)
 		{
-			case SPRITE_INDIV:
+			case SPRITES:
 				program = textured2D;
-			case SPRITE_BATCH:
-				program = batchTextured2D;
 			case SHAPES:
 				program = untextured2D;
 			default:

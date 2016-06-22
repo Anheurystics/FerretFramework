@@ -1,4 +1,4 @@
-attribute vec3 position;
+attribute vec2 position;
 attribute vec2 uv;
 attribute vec3 color;
 
@@ -11,7 +11,7 @@ varying vec3 Color;
 
 void main()
 {
-	gl_Position = proj * view * model * vec4(position, 1.0);
+	gl_Position = proj * view * model * vec4(position, 0.0, 1.0);
 	
 	UV = uv;
 	Color = color;

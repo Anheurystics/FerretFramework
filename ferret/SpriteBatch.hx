@@ -2,6 +2,7 @@ package ferret;
 
 import ferret.SpriteBatch.Sprite;
 import ferret.TextureSheet;
+import ferret.gl.Mat4;
 import ferret.gl.Mesh;
 import ferret.gl.MeshData;
 import ferret.gl.Renderer;
@@ -32,6 +33,8 @@ class SpriteBatch
 	private var spriteVertices: Array<Float> = [];
 	private var spriteIndices: Array<Int> = [];
 	private var dirty: Bool = false;
+	
+	private var modelIdentity: Mat4 = new Mat4();
 	
 	private var quad: Array<Vector3D> = [
 		new Vector3D( -0.5,  0.5, 0),
@@ -116,6 +119,7 @@ class SpriteBatch
 	
 	public function drawPrebatched(_renderer: Renderer): Void
 	{
+		_renderer.uniformMatrix("model", modelIdentity);
 		_renderer.uploadTexture(sheet.texture);
 		
 		if (dirty)
