@@ -66,6 +66,7 @@ class Scene3D extends Scene
 	
 	override public function update(delta:Float) 
 	{
+		camera = perspCam;
 		super.update(delta);
 		for (key in modelInstances.keys())
 		{
