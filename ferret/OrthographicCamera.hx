@@ -79,11 +79,6 @@ class OrthographicCamera implements Camera
 		right = mat.transformVector(new Vector3D(1, 0, 0, 0));
 		up = mat.transformVector(new Vector3D(0, 1, 0, 0));
 	}
-
-	public function getPosition(): Vector3D
-	{
-		return transform.position;
-	}
 	
 	public function getProjection(): Mat4
 	{
