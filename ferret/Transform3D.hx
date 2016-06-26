@@ -89,6 +89,13 @@ class Transform3D
 		return this;
 	}
 	
+	public function lookAt(_position: Vector3D, _target: Vector3D, _up: Vector3D): Transform3D
+	{
+		matrix.lookAt(_position, _target, _up);
+		
+		return this;
+	}
+	
 	public function getMatrix(): Mat4
 	{
 		var m: Mat4;

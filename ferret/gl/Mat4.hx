@@ -35,7 +35,6 @@ class Mat4 implements Mat
 		_matrix.append(mat.internal());
 		return this;
 	}
-	
 
 	public function translate(x: Float = 0, y: Float = 0, z: Float = 0): Mat4
 	{
