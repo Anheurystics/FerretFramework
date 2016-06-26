@@ -1,4 +1,4 @@
-package ferret.gl;
+package ferret;
 
 import ferret.gl.Mat3;
 import openfl.geom.Vector3D;

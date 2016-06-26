@@ -3,7 +3,7 @@ package ferret;
 import ferret.gl.Mesh;
 import ferret.gl.PerspectiveCamera;
 import ferret.gl.Program;
-import ferret.gl.Transform3D;
+import ferret.Transform3D;
 import openfl.Assets;
 
 typedef Instance3D = 
