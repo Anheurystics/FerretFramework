@@ -93,10 +93,8 @@ class Transform3D
 	public function lookAt(target: Vector3D): Transform3D
 	{
 		var diff: Vector3D = target.subtract(position);
-		
-		var r: Float = diff.length;
 		var yaw: Float = Math.atan2(diff.x, diff.z);
-		var pitch: Float = Math.atan2(diff.y * -1, r);
+		var pitch: Float = Math.atan2(diff.y * -1, diff.length);
 		
 		rotateTo(Utils.toDeg(pitch), Utils.toDeg(yaw), 0);
 		
