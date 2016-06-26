@@ -16,58 +16,77 @@ class Transform3D
 
 	public function new() {}
 	
-	public function moveBy(x: Float, y: Float, z: Float): Void
+	public function reset(): Transform3D
+	{
+		matrix.identity();
+		
+		return this;
+	}	
+	
+	public function moveBy(x: Float, y: Float, z: Float): Transform3D
 	{
 		position.x += x;
 		position.y += y;
 		position.z += z;
 		
 		_dirty = true;
+		
+		return this;
 	}
 	
-	public function moveTo(x: Float, y: Float, z: Float): Void
+	public function moveTo(x: Float, y: Float, z: Float): Transform3D
 	{
 		position.x = x;
 		position.y = y;
 		position.z = z;
 		
 		_dirty = true;
+		
+		return this;
 	}	
 	
-	public function rotateBy(x: Float, y: Float, z: Float): Void
+	public function rotateBy(x: Float, y: Float, z: Float): Transform3D
 	{
 		rotation.x += x;
 		rotation.y += y;
 		rotation.z += z;
 		
 		_dirty = true;
+		
+		return this;
 	}	
 	
-	public function rotateTo(x: Float, y: Float, z: Float): Void
+	public function rotateTo(x: Float, y: Float, z: Float): Transform3D
 	{
 		rotation.x = x;
 		rotation.y = y;
 		rotation.z = z;
 		
 		_dirty = true;
+		
+		return this;
 	}
 	
-	public function scaleBy(x: Float, y: Float, z: Float): Void
+	public function scaleBy(x: Float, y: Float, z: Float): Transform3D
 	{
 		scale.x *= x;
 		scale.y *= y;
 		scale.z *= z;
 		
 		_dirty = true;
+		
+		return this;
 	}
 	
-	public function scaleTo(x: Float, y: Float, z: Float): Void
+	public function scaleTo(x: Float, y: Float, z: Float): Transform3D
 	{
 		scale.x = x;
 		scale.y = y;
 		scale.z = z;
 		
-		_dirty = true;		
+		_dirty = true;
+		
+		return this;
 	}
 	
 	public function getMatrix(): Mat4

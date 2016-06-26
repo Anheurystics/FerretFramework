@@ -16,56 +16,69 @@ class Transform2D
 
 	public function new() {}
 	
-	public function reset(): Void
+	public function reset(): Transform2D
 	{
 		matrix.identity();
+		
+		return this;
 	}
 	
-	public function moveBy(x: Float, y: Float): Void
+	public function moveBy(x: Float, y: Float): Transform2D
 	{
 		position.x += x;
 		position.y += y;
 		
 		_dirty = true;
+		
+		return this;
 	}
 	
-	public function moveTo(x: Float, y: Float): Void
+	public function moveTo(x: Float, y: Float): Transform2D
 	{
 		position.x = x;
 		position.y = y;
 		
 		_dirty = true;
+		
+		return this;
 	}	
 	
-	public function rotateBy(degrees: Float): Void
+	public function rotateBy(degrees: Float): Transform2D
 	{
 		rotation += degrees;
 		
 		_dirty = true;
+		
+		return this;
 	}	
 	
-	public function rotateTo(degrees: Float): Void
+	public function rotateTo(degrees: Float): Transform2D
 	{
 		rotation = degrees;
 		
 		_dirty = true;
+		
+		return this;
 	}
 	
-	public function scaleBy(x: Float, y: Float): Void
+	public function scaleBy(x: Float, y: Float): Transform2D
 	{
 		scale.x *= x;
 		scale.y *= y;
 		
 		_dirty = true;
+		
+		return this;
 	}
 	
-	public function scaleTo(x: Float, y: Float): Void
+	public function scaleTo(x: Float, y: Float): Transform2D
 	{
 		scale.x = x;
 		scale.y = y;
-
 		
-		_dirty = true;		
+		_dirty = true;
+		
+		return this;
 	}
 	
 	public function getMatrix(): Mat3
