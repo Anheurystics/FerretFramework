@@ -87,6 +87,11 @@ class PerspectiveCamera implements Camera
 		up = matx.transformVector(new Vector3D(0, 1, 0, 0));
 	}
 
+	public function getPosition(): Vector3D
+	{
+		return transform.position;
+	}	
+	
 	public function getProjection(): Mat4
 	{
 		return projection;
