@@ -1,9 +1,9 @@
 package ferret;
 
-import ferret.gl.Mesh;
 import ferret.PerspectiveCamera;
-import ferret.gl.Program;
 import ferret.Transform3D;
+import ferret.gl.Mesh;
+import ferret.gl.Program;
 import openfl.Assets;
 
 typedef Instance3D = 
