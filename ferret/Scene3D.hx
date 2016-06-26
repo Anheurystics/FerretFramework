@@ -1,7 +1,7 @@
 package ferret;
 
 import ferret.gl.Mesh;
-import ferret.gl.PerspectiveCamera;
+import ferret.PerspectiveCamera;
 import ferret.gl.Program;
 import ferret.Transform3D;
 import openfl.Assets;

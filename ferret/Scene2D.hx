@@ -1,6 +1,6 @@
 package ferret;
 
-import ferret.gl.OrthographicCamera;
+import ferret.OrthographicCamera;
 import ferret.gl.Program;
 import openfl.Assets;
 
