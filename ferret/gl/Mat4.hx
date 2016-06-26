@@ -106,7 +106,7 @@ class Mat4 implements Mat
 		
 		Y = Z.crossProduct(X);
 		Y.normalize();
-		
+
 		_matrix.rawData =
 			[
 				X.x, Y.x, -Z.x, 0,

@@ -1,6 +1,7 @@
 package ferret;
 
 import ferret.gl.Mat4;
+import ferret.gl.Utils;
 import openfl.geom.Vector3D;
 
 class Transform3D
@@ -89,9 +90,17 @@ class Transform3D
 		return this;
 	}
 	
-	public function lookAt(_position: Vector3D, _target: Vector3D, _up: Vector3D): Transform3D
+	public function lookAt(target: Vector3D): Transform3D
 	{
-		matrix.lookAt(_position, _target, _up);
+		var diff: Vector3D = target.subtract(position);
+		
+		var r: Float = diff.length;
+		var yaw: Float = Math.atan2(diff.x, diff.z);
+		var pitch: Float = Math.atan2(diff.y * -1, r);
+		
+		rotateTo(Utils.toDeg(pitch), Utils.toDeg(yaw), 0);
+		
+		_dirty = true;
 		
 		return this;
 	}
