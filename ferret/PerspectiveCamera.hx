@@ -2,6 +2,7 @@ package ferret;
 
 import ferret.gl.Camera;
 import ferret.gl.Mat4;
+import ferret.gl.Utils;
 import openfl.geom.Matrix3D;
 import openfl.geom.Vector3D;
 
