@@ -1,8 +1,11 @@
 package ferret.gl;
 
 import ferret.gl.Texture;
+import openfl.display.BitmapData;
 import openfl.geom.Rectangle;
 import openfl.gl.GL;
+import openfl.text.TextField;
+import openfl.text.TextFormat;
 
 class TextureManager
 {	
@@ -27,5 +30,23 @@ class TextureManager
 	public static function get(name: String): Texture
 	{
 		return textures.get(name);
+	}
+	
+	public static function fromText(text: String, format: TextFormat, name: String, smooth: Bool = true): Texture
+	{
+		var field: TextField = new TextField();
+		
+		field.text = text;
+		field.defaultTextFormat = format;
+		field.embedFonts = true;
+		field.width = field.textWidth * 1.1;
+		field.height = field.textHeight * 1.1;
+		
+		var data: BitmapData = new BitmapData(Math.ceil(field.width), Math.ceil(field.height), true, 0);
+		data.draw(field, null, null, null, null, smooth);
+		
+		TextureManager.load(name, data, GL.LINEAR);
+		
+		return TextureManager.get(name);
 	}
 }
