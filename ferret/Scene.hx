@@ -11,11 +11,11 @@ import openfl.gl.GL;
 
 class Scene extends OpenGLView
 {	
-	var renderer: Renderer;
-	var program: Program;
-	var camera: Camera;
-	
-	var clearColor: Color = Color.fromFloat(0, 0, 0);
+	private var renderer: Renderer;
+	private var program: Program;
+	private var camera: Camera;
+	private var clearColor: Color = Color.fromFloat(0, 0, 0);
+	private var transparent: Bool = false;
 	
 	public function new() 
 	{
@@ -44,7 +44,10 @@ class Scene extends OpenGLView
 
 	public function update(delta: Float)
 	{
-		renderer.clear(clearColor.r, clearColor.g, clearColor.b);
+		if (!transparent)
+		{
+			renderer.clear(clearColor.r, clearColor.g, clearColor.b);
+		}
 		renderer.depthTest(GL.LEQUAL);
 		
 		if (program != null)
