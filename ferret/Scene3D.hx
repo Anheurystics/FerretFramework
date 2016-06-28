@@ -1,20 +1,13 @@
 package ferret;
 
 import ferret.PerspectiveCamera;
+import ferret.Scene.UVLayout;
 import ferret.Scene3D.Instance3D;
 import ferret.Transform3D;
 import ferret.gl.Mesh;
 import ferret.gl.Program;
 import ferret.gl.Texture;
 import openfl.Assets;
-
-typedef UVLayout = 
-{
-	var offsetX: Float;
-	var offsetY: Float;
-	var scaleX: Float;
-	var scaleY: Float;
-};
 
 typedef Instance3D = 
 {

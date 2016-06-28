@@ -9,6 +9,14 @@ import openfl.events.Event;
 import openfl.geom.Rectangle;
 import openfl.gl.GL;
 
+typedef UVLayout = 
+{
+	var offsetX: Float;
+	var offsetY: Float;
+	var scaleX: Float;
+	var scaleY: Float;
+};
+
 class Scene extends OpenGLView
 {	
 	private var renderer: Renderer;
