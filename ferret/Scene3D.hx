@@ -1,15 +1,27 @@
 package ferret;
 
 import ferret.PerspectiveCamera;
+import ferret.Scene3D.Instance3D;
 import ferret.Transform3D;
 import ferret.gl.Mesh;
 import ferret.gl.Program;
+import ferret.gl.Texture;
 import openfl.Assets;
+
+typedef UVLayout = 
+{
+	var offsetX: Float;
+	var offsetY: Float;
+	var scaleX: Float;
+	var scaleY: Float;
+};
 
 typedef Instance3D = 
 {
 	var meshIndex: Int;
 	var transform: Transform3D;
+	var texture: Texture;
+	var uvLayout: UVLayout;
 }
 
 class Scene3D extends Scene
@@ -21,7 +33,7 @@ class Scene3D extends Scene
 	private var textured3D: Program = new Program(Assets.getText("shaders/textured3D.vert"), Assets.getText("shaders/textured3D.frag"));	
 	
 	private var meshList: Array<Mesh> = new Array();
-	private var modelInstances: Map<Int, Array<Transform3D>> = new Map();
+	private var modelInstances: Map<Int, Array<Instance3D>> = new Map();
 	
 	private var renderType: Int;
 	
@@ -44,13 +56,24 @@ class Scene3D extends Scene
 				program = textured3D;
 			default:
 				program = textured3D;
+				renderType = TEXTURED;
 		}
 		
 		renderType = type;
 		renderer.uploadProgram(program);
+		
+		switch(renderType)
+		{
+			case UNTEXTURED:
+				renderer.uniformf("ambient", 0.8, 0.8, 0.8);
+			case TEXTURED:
+				renderer.uniformf("ambient", 0.8, 0.8, 0.8);
+				renderer.uniformf("uvOffset", 0.0, 0.0);
+				renderer.uniformf("uvScale", 1.0, 1.0);
+		}
 	}	
 	
-	public function createModelInstance(mesh: Mesh): Transform3D
+	public function createModelInstance(mesh: Mesh): Instance3D
 	{
 		var index: Int = meshList.indexOf(mesh);
 		if (index == -1)
@@ -58,22 +81,35 @@ class Scene3D extends Scene
 			index = meshList.push(mesh) - 1;
 			modelInstances.set(index, new Array());
 		}
+
+		var instance: Instance3D = {
+			meshIndex: index,
+			transform: new Transform3D(),
+			texture: null,
+			uvLayout: {offsetX: 0, offsetY: 0, scaleX: 1, scaleY: 1}
+		};
 		
-		var t: Transform3D = new Transform3D();
-		modelInstances.get(index).push(t);
-		return t;
+		modelInstances.get(index).push(instance);
+		return instance;
 	}
 	
 	override public function update(delta:Float) 
 	{
 		camera = perspCam;
 		super.update(delta);
+
 		for (key in modelInstances.keys())
 		{
 			renderer.uploadMesh(meshList[key]);
 			for (modelInstance in modelInstances.get(key))
 			{
-				renderer.renderMesh(modelInstance.getMatrix());
+				if (renderType == TEXTURED)
+				{
+					renderer.uploadTexture(modelInstance.texture);
+					renderer.uniformf("uvOffset", modelInstance.uvLayout.offsetX, modelInstance.uvLayout.offsetY);
+					renderer.uniformf("uvScale", modelInstance.uvLayout.scaleX, modelInstance.uvLayout.scaleY);
+				}
+				renderer.renderMesh(modelInstance.transform.getMatrix());
 			}
 		}
 	}
