@@ -2,6 +2,7 @@ package ferret;
 
 import ferret.gl.Mat4;
 import ferret.gl.Utils;
+import haxe.ds.Vector;
 import openfl.geom.Vector3D;
 
 class Transform3D
@@ -35,6 +36,11 @@ class Transform3D
 		return this;
 	}
 	
+	public function moveByV(v: Vector3D): Transform3D
+	{
+		return moveBy(v.x, v.y, v.z);
+	}
+	
 	public function moveTo(x: Float, y: Float, z: Float): Transform3D
 	{
 		position.x = x;
@@ -44,7 +50,12 @@ class Transform3D
 		_dirty = true;
 		
 		return this;
-	}	
+	}
+	
+	public function moveToV(v: Vector3D): Transform3D
+	{
+		return moveTo(v.x, v.y, v.z);
+	}
 	
 	public function rotateBy(x: Float, y: Float, z: Float): Transform3D
 	{
@@ -57,6 +68,11 @@ class Transform3D
 		return this;
 	}	
 	
+	public function rotateByV(v: Vector3D): Transform3D
+	{
+		return rotateBy(v.x, v.y, v.z);
+	}
+	
 	public function rotateTo(x: Float, y: Float, z: Float): Transform3D
 	{
 		rotation.x = x;
@@ -66,6 +82,11 @@ class Transform3D
 		_dirty = true;
 		
 		return this;
+	}
+	
+	public function rotateToV(v: Vector3D): Transform3D
+	{
+		return rotateTo(v.x, v.y, v.z);
 	}
 	
 	public function scaleBy(x: Float, y: Float, z: Float): Transform3D
@@ -79,6 +100,11 @@ class Transform3D
 		return this;
 	}
 	
+	public function scaleByV(v: Vector3D): Transform3D
+	{
+		return scaleBy(v.x, v.y, v.z);
+	}
+	
 	public function scaleTo(x: Float, y: Float, z: Float): Transform3D
 	{
 		scale.x = x;
@@ -88,6 +114,11 @@ class Transform3D
 		_dirty = true;
 		
 		return this;
+	}
+	
+	public function scaleToV(v: Vector3D): Transform3D
+	{
+		return scaleTo(v.x, v.y, v.z);
 	}
 	
 	public function lookAt(target: Vector3D): Transform3D
