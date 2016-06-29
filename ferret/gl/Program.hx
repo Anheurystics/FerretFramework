@@ -31,9 +31,7 @@ class Program
 		#if (desktop || mobile)
 		src = "#version " + version + "\n" + src;
 		#end
-		
-		src = StringTools.replace(src, "bgra", "rgba");
-		
+
 		return src;
 	}
 	
@@ -43,7 +41,7 @@ class Program
 		src = "precision mediump float;\n" + src;
 		src = StringTools.replace(src, "texture(", "texture2D(");
 		#if html5
-		src = StringTools.replace(src, "bgra", "rgba");
+		src = StringTools.replace(src, ".rgba", ".bgra");
 		#end
 		#end
 	

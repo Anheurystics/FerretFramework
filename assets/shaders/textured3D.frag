@@ -61,5 +61,5 @@ void main()
 		diffuseLighting += dirLights[i].color * brightness;		
 	}
 	
-	gl_FragColor = vec4(texture(tex, UV * uvScale + uvOffset).bgr * vec3((diffuseLighting + totalLighting * Color)), 1.0);
+	gl_FragColor = vec4(texture(tex, UV * uvScale + uvOffset).bgr * vec3((diffuseLighting + totalLighting * Color)), 1.0).rgba;
 }
