@@ -102,8 +102,8 @@ class Scene3D extends Scene
 		
 		clone.transform.rotateToV(instance.transform.rotation).scaleToV(instance.transform.scale).moveToV(instance.transform.position);
 		
-		modelInstances.get(instance.meshIndex).push(clone);
-		return instance;		
+		modelInstances.get(clone.meshIndex).push(clone);
+		return clone;		
 	}
 	
 	override public function update(delta:Float) 
