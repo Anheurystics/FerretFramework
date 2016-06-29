@@ -86,6 +86,26 @@ class Scene3D extends Scene
 		return instance;
 	}
 	
+	public function cloneModelInstance(instance: Instance3D): Instance3D
+	{
+		var clone: Instance3D = {
+			meshIndex: instance.meshIndex,
+			transform: new Transform3D(),
+			texture: instance.texture,
+			uvLayout: {
+				offsetX: instance.uvLayout.offsetX, 
+				offsetY: instance.uvLayout.offsetY, 
+				scaleX: instance.uvLayout.scaleX, 
+				scaleY: instance.uvLayout.scaleY
+			}
+		};
+		
+		clone.transform.rotateToV(instance.transform.rotation).scaleToV(instance.transform.scale).moveToV(instance.transform.position);
+		
+		modelInstances.get(instance.meshIndex).push(clone);
+		return instance;		
+	}
+	
 	override public function update(delta:Float) 
 	{
 		camera = perspCam;
