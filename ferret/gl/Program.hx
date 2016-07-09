@@ -41,7 +41,7 @@ class Program
 		src = "precision mediump float;\n" + src;
 		src = StringTools.replace(src, "texture(", "texture2D(");
 		#if html5
-		src = StringTools.replace(src, ".rgba", ".bgra");
+		src = StringTools.replace(src, ".bgra", ".rgba");
 		#end
 		#end
 	
