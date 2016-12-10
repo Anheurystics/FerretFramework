@@ -1,6 +1,7 @@
 package ferret.gl;
 
 import ferret.gl.Mat;
+import openfl.Vector;
 import openfl.geom.Matrix3D;
 import openfl.geom.Vector3D;
 import openfl.utils.Float32Array;
@@ -68,12 +69,12 @@ class Mat4 implements Mat
 		var f: Float = 1.0 / Math.tan(Utils.toRad(fov) / 2);
 		var nf: Float = 1 / (near - far);
 
-		_matrix.rawData = [
+		_matrix.rawData = Vector.ofArray([
 			f / aspect, 0, 0, 0,
 			0, f, 0, 0,
 			0, 0, (far + near) * nf, -1,
 			0, 0, (2 * far * near) * nf, 0
-		];
+		]);
 
 		return this;
 	}
@@ -84,11 +85,12 @@ class Mat4 implements Mat
 		var sy = 1.0 / (top - bottom);
 		var sz = 1.0 / (zFar - zNear);
 
-		_matrix.rawData = [
+		_matrix.rawData = Vector.ofArray([
 			2 * sx, 	0, 			0, 				0, 
 			0, 			2 * sy,		0, 				0, 
 			0, 			0, 			-2 * sz, 		0, 
-			-(right + left) * sx, -(top + bottom) * sy, -(zNear + zFar) * sz, 1 ];
+			-(right + left) * sx, -(top + bottom) * sy, -(zNear + zFar) * sz, 1 
+		]);
 
 		return this;
 	}
@@ -107,13 +109,12 @@ class Mat4 implements Mat
 		Y = Z.crossProduct(X);
 		Y.normalize();
 
-		_matrix.rawData =
-			[
-				X.x, Y.x, -Z.x, 0,
-				X.y, Y.y, -Z.y, 0,
-				X.z, Y.z, -Z.z, 0,
-				-X.dotProduct(position), -Y.dotProduct(position), Z.dotProduct(position), 1
-			];
+		_matrix.rawData = Vector.ofArray([
+			X.x, Y.x, -Z.x, 0,
+			X.y, Y.y, -Z.y, 0,
+			X.z, Y.z, -Z.z, 0,
+			-X.dotProduct(position), -Y.dotProduct(position), Z.dotProduct(position), 1
+		]);
 		
 		return this;
 	}
