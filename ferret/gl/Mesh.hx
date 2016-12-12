@@ -43,10 +43,17 @@ class Mesh
 		return ret;
 	}
 		
-	public function new(meshData: MeshData, _indices: Array<Int>) 
+	public function new(meshData: MeshData, _indices: Array<Int> = null) 
 	{		
 		data = meshData;
-		indices = _indices;
+		if (_indices == null)
+		{
+			indices = [];
+		}
+		else
+		{
+			indices = _indices;
+		}
 		
 		updateBuffer();
 		
