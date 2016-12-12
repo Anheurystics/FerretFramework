@@ -13,6 +13,7 @@ import openfl.Lib;
 typedef Instance3D = 
 {
 	var meshIndex: Int;
+	var mesh: Mesh;
 	var transform: Transform3D;
 	var texture: Texture;
 	var uvLayout: UVLayout;
@@ -80,6 +81,7 @@ class Scene3D extends Scene
 
 		var instance: Instance3D = {
 			meshIndex: index,
+			mesh: mesh,
 			transform: new Transform3D(),
 			texture: null,
 			uvLayout: {offsetX: 0, offsetY: 0, scaleX: 1, scaleY: 1}
@@ -93,6 +95,7 @@ class Scene3D extends Scene
 	{
 		var clone: Instance3D = {
 			meshIndex: instance.meshIndex,
+			mesh: instance.mesh,
 			transform: new Transform3D(),
 			texture: instance.texture,
 			uvLayout: {
@@ -113,7 +116,7 @@ class Scene3D extends Scene
 	{
 		camera = perspCam;
 		super.update(delta);
-
+		
 		for (key in modelInstances.keys())
 		{
 			renderer.uploadMesh(meshList[key]);
