@@ -11,6 +11,12 @@ typedef DataLayout =
 
 class MeshData
 {
+	public var vertexCount(get, null): Int;
+	function get_vertexCount(): Int
+	{
+		return Std.int(array.length / maxSize);
+	}
+	
 	public var array: Array<Float>;
 	public var layouts: Map<String, DataLayout>;
 	public var names: Array<String>;
