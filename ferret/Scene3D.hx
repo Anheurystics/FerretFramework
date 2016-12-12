@@ -8,6 +8,7 @@ import ferret.gl.Mesh;
 import ferret.gl.Program;
 import ferret.gl.Texture;
 import openfl.Assets;
+import openfl.Lib;
 
 typedef Instance3D = 
 {
@@ -35,6 +36,8 @@ class Scene3D extends Scene
 	public function new() 
 	{
 		super();
+		
+		perspCam = new PerspectiveCamera(54, Lib.current.stage.stageWidth / Lib.current.stage.stageHeight, 0.1, 100.0);
 		
 		setRenderType(UNTEXTURED);
 	}
