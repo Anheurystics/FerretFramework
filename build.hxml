@@ -1,0 +1,24 @@
+-main ApplicationMain 
+--macro openfl._internal.utils.ExtraParams.include()
+-cp C:/HaxeToolkit/haxe/lib/openfl/4,8,1
+-D openfl=4.8.1
+--macro lime.Lib.extraParams()
+-cp C:/HaxeToolkit/haxe/lib/lime/3,7,4
+-D lime=3.7.4
+-cp C:\HaxeToolkit\haxe\lib\openfl/4,8,1/externs/core/openfl
+-cp C:\HaxeToolkit\haxe\lib\openfl/4,8,1/externs/extras
+-D tools=3.7.4
+-D no-compilation
+-D native
+-D lime-native
+-D lime-vorbis
+-D openfl-native
+-D lime-cffi
+-D windows
+-D desktop
+--remap flash:openfl
+-cp bin/windows/cpp/release/haxe
+-cpp bin/windows/cpp/release/obj
+--macro keep("Main")
+
+-D display
