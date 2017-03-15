@@ -59,7 +59,7 @@ void main()
 		diffuseLighting += dirLights[i].color * brightness;		
 	}
 	
-	vec4 texColor = texture(tex, UV * uvScale + uvOffset).bgra;
+	vec4 texColor = texture(tex, UV).bgra;
 	if(texColor.a == 0.0)
 	{
 		discard;
