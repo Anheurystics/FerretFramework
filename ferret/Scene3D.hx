@@ -1,7 +1,6 @@
 package ferret;
 
 import ferret.PerspectiveCamera;
-import ferret.Scene.UVLayout;
 import ferret.Scene3D.Instance3D;
 import ferret.Transform3D;
 import ferret.gl.Mesh;
@@ -16,7 +15,6 @@ typedef Instance3D =
 	var mesh: Mesh;
 	var transform: Transform3D;
 	var texture: Texture;
-	var uvLayout: UVLayout;
 }
 
 class Scene3D extends Scene
@@ -65,8 +63,6 @@ class Scene3D extends Scene
 				renderer.uniformf("ambient", 0.8, 0.8, 0.8);
 			case TEXTURED:
 				renderer.uniformf("ambient", 0.8, 0.8, 0.8);
-				renderer.uniformf("uvOffset", 0.0, 0.0);
-				renderer.uniformf("uvScale", 1.0, 1.0);
 		}
 	}	
 	
@@ -83,8 +79,7 @@ class Scene3D extends Scene
 			meshIndex: index,
 			mesh: mesh,
 			transform: new Transform3D(),
-			texture: null,
-			uvLayout: {offsetX: 0, offsetY: 0, scaleX: 1, scaleY: 1}
+			texture: null
 		};
 		
 		modelInstances.get(index).push(instance);
@@ -97,13 +92,7 @@ class Scene3D extends Scene
 			meshIndex: instance.meshIndex,
 			mesh: instance.mesh,
 			transform: new Transform3D(),
-			texture: instance.texture,
-			uvLayout: {
-				offsetX: instance.uvLayout.offsetX, 
-				offsetY: instance.uvLayout.offsetY, 
-				scaleX: instance.uvLayout.scaleX, 
-				scaleY: instance.uvLayout.scaleY
-			}
+			texture: instance.texture
 		};
 		
 		clone.transform.rotateToV(instance.transform.rotation).scaleToV(instance.transform.scale).moveToV(instance.transform.position);
@@ -125,8 +114,6 @@ class Scene3D extends Scene
 				if (renderType == TEXTURED)
 				{
 					renderer.uploadTexture(modelInstance.texture);
-					renderer.uniformf("uvOffset", modelInstance.uvLayout.offsetX, modelInstance.uvLayout.offsetY);
-					renderer.uniformf("uvScale", modelInstance.uvLayout.scaleX, modelInstance.uvLayout.scaleY);
 				}
 				renderer.renderMesh(modelInstance.transform.getMatrix());
 			}

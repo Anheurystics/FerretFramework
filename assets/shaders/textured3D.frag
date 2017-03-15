@@ -27,8 +27,6 @@ uniform DirLight dirLights[MAX_DIR_LIGHTS];
 uniform int numDirLights;
 
 uniform vec3 ambient;
-uniform vec2 uvOffset;
-uniform vec2 uvScale;
 uniform sampler2D tex;
 
 void main()
